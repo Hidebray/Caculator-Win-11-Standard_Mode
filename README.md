@@ -1,143 +1,54 @@
-# Windows 11 Basic Mode Calculator Documentation
+# 💻 Standard Calculator (Web Implementation)
 
----
+## 📌 Project Overview
 
-# 🧰 Functional Specifications
+This project delivers a robust, web-based calculator application engineered to replicate the **Standard Mode** functionality found in the Windows 11 operating system. Developed entirely with **vanilla JavaScript**, the application focuses on accurate arithmetic execution, comprehensive error handling, and a seamless user experience, making it a reliable tool for everyday calculations.
 
-### Purpose and Scope
+## ✨ Core Features & Functionality
 
-This calculator web application is designed to emulate the **Windows 11 Basic Calculator** in functionality. It allows users to perform basic arithmetic operations, percentage calculations, square, square root, negate, inverse, and handles standard inputs like CE, C, and Backspace.
+### Arithmetic and Execution Model
 
-**Scope:**
+The calculator operates on a **sequential execution model**, performing operations immediately as they are entered, rather than following standard mathematical precedence (e.g., $2 + 3 \times 4$ yields $20$, not $14$).
 
-* Desktop and mobile usage.
-* Support for basic arithmetic (+, −, ×, ÷), percentage, square, square root, negate and inverse.
-* History tracking of previous calculations.
-* Responsive and accessible UI.
+* **Four-Function Arithmetic**: Full support for Addition ($\mathbf{+}$), Subtraction ($\mathbf{-}$), Multiplication ($\mathbf{\times}$), and Division ($\mathbf{\div}$).
+* **Continuous Operation**: The equals ($\mathbf{=}$) function supports repeated execution of the last operator and operand, facilitating iterative calculations (e.g., $5+2=7$, followed by $\mathbf{=}$ yields $9, 11, 13, \dots$).
+* **Precision Management**: Input and results are managed to a limit of **17 significant digits** to ensure display consistency and prevent UI overflow.
 
-### Supported Features (Same as Windows 11 Basic Mode)
+### Advanced Standard Functions
 
-1. **Append Numbers**: 0–9, decimal (.)
-2. **Set Operators**: +, −, ×, ÷
-3. **Handle Equals**: =
-4. **Percentage**: % (operand-based)
-5. **Square**: sqr(x)
-6. **Square Root**: √x
-7. **Negate**: ±
-8. **Inverse**: 1/x
-9. **Clear Entry**: CE 
-10. **Clear All**: C
-11. **Backspace**: ⌫
-12. **History Panel**: stores, load and adjust (delete one or all) previous calculations
-13. **Expression display**: shows current operation
-14. **Input validation**: max digits (17), correct rounding and convert to science
-15. **Error handling**: divide by zero, zero by zero, invalid input and disabled button
+| Function | Symbol | Description |
+| :--- | :--- | :--- |
+| **Percentage** | % | Behavior is contextual: calculates the percentage of the preceding operand for addition/subtraction, or acts as a $\div 100$ multiplier for multiplication/division. |
+| **Square Root** | $\mathbf{\sqrt{x}}$ | Computes the square root of the current input value. |
+| **Squaring** | $\mathbf{x^2}$ | Calculates the square of the current input value. |
+| **Reciprocal** | $\mathbf{1/x}$ | Computes the inverse of the current input. |
+| **Negation** | $\mathbf{\pm}$ | Toggles the sign of the current input. |
 
-### Input, Operators, and Display Handling
+### Utility and User Experience
 
-* **Input Handling**:
+* **Calculation History**: A persistent sidebar logs completed equations and their results. Users can reload any past calculation state into the primary display with a single click.
+* **Dynamic Display Scaling**: The primary and expression displays utilize dynamic font size adjustment, ensuring that long results (including those in scientific notation) remain visible without text overflow.
+* **Input Management**: Separate functions for **Clear Entry (CE)** (clears only the current input), **Clear (C)** (resets all state), and **Backspace** ($\mathbf{\leftarrow}$) (deletes the last digit).
+* **Comprehensive Error Handling**: Displays specific, non-blocking messages for:
+    * `Cannot divide by zero`
+    * `Result is undefined` ($0 \div 0$)
+    * `Invalid input` (for $\sqrt{-n}$)
+* **Keyboard Accessibility**: Full keyboard navigation is supported for numerical input, operators ($+$, $-$, $*$, $/$), $\text{Enter}/\text{=}$, $\text{Backspace}$, and $\mathbf{\%}$.
 
-  * Number buttons append digits to the current input.
-  * Decimal adds a dot if not present.
-  * Max 17 digits visible; if overflow, converts to scientific notation.
+## ⚙️ Technical Stack
 
-* **Operator Handling**:
+This project is implemented with a focus on simplicity, performance, and maintainability.
 
-  * Stores previous value and operator.
-  * On consecutive operators, calculates intermediate result.
-  * Handles repeated equals operations with stored last operator and operand.
+* **Language**: Vanilla JavaScript (ES6+)
+* **Architecture**: State managed through a clear and traceable execution flow within the `calculator.js` module.
+* **Deployment**: Purely client-side, requiring no backend or complex server configuration.
 
-* **Display Handling**:
+## 🚀 Getting Started
 
-  * Current input is shown on the main display.
-  * Expression (previous value + operator + current value) is shown on top.
-  * Scrolls horizontally if too long.
-  * Adjusts font size dynamically for overflow.
+To view or use the calculator locally, follow these steps:
 
-* **Assumptions**:
-
-  * Floating point operations are rounded to 11 significant digits.
-  * Standard operator precedence is not implemented (left-to-right).
-  * Percentage calculations follow Windows behavior: `A % B = (A*B)/100` for +/−, `A % B = B/100` for ×/÷.
-
----
-
-# ⚙️ Non-Functional Specifications
-
-### Performance
-
-* Instant calculation on button press.
-* Smooth display updates without flickering.
-
-### Usability
-
-* Buttons large enough for touch.
-* Clear expression display.
-* History accessible with clickable previous results.
-
-### Cross-browser Compatibility
-
-* Chrome, Edge, Firefox, Safari tested.
-* Modern JavaScript and CSS standards used.
-
-### Responsiveness
-
-* Desktop layout: calculator left, history right.
-* Mobile layout: calculator stacked above history panel.
-
-### Reliability and Maintainability
-
-* Modular JavaScript functions for operations.
-* Separate CSS for theme and layout.
-* Clear comments and structured code for maintainability.
-
----
-
-# ✅ Acceptance Criteria
-
-1. Arithmetic operations return correct results.
-2. Operator precedence applied as per left-to-right evaluation.
-3. CE, C, Backspace behave like Windows 11 calculator.
-4. Display updates accurately after each input.
-5. Design remains stable across browsers and devices.
-6. Deployed version publicly accessible and functional.
-
----
-
-# 🧪 Testing Plan
-
-**Method:** Manual testing with expected vs. actual output verification.
-
-**Test Cases (Examples):
-
-| Input       | Expected Output       | Actual Output         | Result |
-| ----------- | --------------------- | --------------------- | ------ |
-| 2 + 3 =     | 5                     | 5                     | Pass   |
-| √9 =        | 3                     | 3                     | Pass   |
-| 10 %        | 0.1                   | 0.1                   | Pass   |
-| 8 − 5 % =   | 7.6                   | 7.6                   | Pass   |
-| sqr(3) =    | 9                     | 9                     | Pass   |
-| negate(5) = | -5                    | -5                    | Pass   |
-| 1 / 0 =     | Cannot divide by zero | Cannot divide by zero | Pass   |
-
----
-
-# 🧠 Prompt Engineering (AI Assistance)
-
-**Prompts Used:**
-
-* "Generate JavaScript logic for Windows 11 calculator Basic Mode including %, sqrt, square, negate operations."
-* "Explain how to parse expressions like `sqr(negate(3)) + 2` to get calculated values."
-* "Provide CSS for responsive calculator layout with max 17-digit display."
-
-**How AI Helped:**
-
-* Suggested modular functions for operators and expression parsing.
-* Assisted with complex edge cases, e.g., repeated equals operations.
-* Provided responsive and theme CSS suggestions.
-
-**Reflections:**
-
-* AI accelerated idea generation and debugging.
-* Ensured best practices in function structure.
-* All code reviewed manually to verify correctness.
+1.  **Clone the Repository:**
+    ```bash
+    git clone [your-repo-link]
+    ```
+2.  **Launch:** Navigate to the project directory and open **`index.html`** in any modern web browser (Chrome, Firefox, Edge, or Safari).
