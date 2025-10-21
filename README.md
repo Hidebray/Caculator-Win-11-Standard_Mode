@@ -39,7 +39,7 @@ The calculator operates on a **sequential execution model**, performing operatio
 
 This project is implemented with a focus on simplicity, performance, and maintainability.
 
-* **Language**: Vanilla JavaScript (ES6+)
+* **Language**: HTML, CSS, and Vanilla JavaScript (ES6+).
 * **Architecture**: State managed through a clear and traceable execution flow within the `calculator.js` module.
 * **Deployment**: Purely client-side, requiring no backend or complex server configuration.
 
@@ -49,6 +49,6 @@ To view or use the calculator locally, follow these steps:
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [your-repo-link]
+    git clone https://github.com/Hidebray/Caculator-Win-11-Standard_Mode.git
     ```
-2.  **Launch:** Navigate to the project directory and open **`index.html`** in any modern web browser (Chrome, Firefox, Edge, or Safari).
+2.  **Launch:** Navigate to the project directory and open **`calculator.html`** in any modern web browser (Chrome, Firefox, Edge, or Safari).
