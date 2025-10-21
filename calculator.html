@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator - Basic Mode</title>
+  <link rel="stylesheet" href="calculator.css">
+  <script src="calculator.js" defer></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="calculator">
+      <div class="calculator-header">
+        <div class="calc-icon">📱</div>
+        <div class="calc-title">Calculator</div>
+      </div>
+      <div class="display-container">
+        <div class="expression" id="expression"></div>
+        <div class="display" id="display">0</div>
+      </div>
+      <div class="buttons">
+        <button class="function" onclick="percentage()">%</button>
+        <button class="function" onclick="clearEntry()">CE</button>
+        <button class="function" onclick="clearAll()">C</button>
+        <button class="function" onclick="backspace()">⌫</button>
+
+        <button class="function" onclick="inverse()">1/x</button>
+        <button class="function" onclick="square()">x²</button>
+        <button class="function" onclick="squareRoot()">√x</button>
+        <button class="operator" onclick="setOperator('÷')">÷</button>
+
+        <button class="number" onclick="appendNumber('7')">7</button>
+        <button class="number" onclick="appendNumber('8')">8</button>
+        <button class="number" onclick="appendNumber('9')">9</button>
+        <button class="operator" onclick="setOperator('×')">×</button>
+
+        <button class="number" onclick="appendNumber('4')">4</button>
+        <button class="number" onclick="appendNumber('5')">5</button>
+        <button class="number" onclick="appendNumber('6')">6</button>
+        <button class="operator" onclick="setOperator('−')">−</button>
+
+        <button class="number" onclick="appendNumber('1')">1</button>
+        <button class="number" onclick="appendNumber('2')">2</button>
+        <button class="number" onclick="appendNumber('3')">3</button>
+        <button class="operator" onclick="setOperator('+')">+</button>
+
+        <button class="function" onclick="negate()">±</button>
+        <button class="number" onclick="appendNumber('0')">0</button>
+        <button class="number" onclick="appendDecimal()">.</button>
+        <button class="equals" onclick="equal()">=</button>
+      </div>
+    </div>
+
+    <div class="history-panel">
+      <div class="history-header">
+        <h3><span class="history-icon">🕐</span>History</h3>
+        <button class="clear-history-btn" onclick="clearHistory()">Clear All</button>
+      </div>
+      <div class="history-list" id="historyList">
+        <div class="empty-history">
+          <div class="empty-history-icon">📊</div>
+          <div class="empty-history-text">No history yet</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
