@@ -1,5 +1,14 @@
 # 💻 Standard Calculator (Web Implementation)
 
+## 🌐 Web Demo
+
+The calculator is successfully deployed and publicly accessible through Render.
+
+**Live link:**  
+👉 [https://web-based-calculator.onrender.com/](https://web-based-calculator.onrender.com/)
+
+Accessible on modern browsers including Chrome, Edge, Firefox, and Safari.
+
 ## 📌 Project Overview
 
 This project delivers a robust, web-based calculator application engineered to replicate the **Standard Mode** functionality found in the Windows 11 operating system. Developed entirely with **vanilla JavaScript**, the application focuses on accurate arithmetic execution, comprehensive error handling, and a seamless user experience, making it a reliable tool for everyday calculations.
